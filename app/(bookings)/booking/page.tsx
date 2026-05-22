@@ -1,19 +1,12 @@
 "use client"
 
-import { useSearchParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { supabase } from "@/src/lib/supabase"
 
 export default function BookingPage() {
 
   const router = useRouter()
-  const searchParams = useSearchParams()
-
-  const airline = searchParams.get("airline") || ""
-  const from = searchParams.get("from") || ""
-  const to = searchParams.get("to") || ""
-  const departure = searchParams.get("departure") || ""
-  const price = searchParams.get("price") || ""
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -26,11 +19,11 @@ export default function BookingPage() {
         {
           passenger_name: name,
           email: email,
-          airline: airline,
-          from_city: from,
-          to_city: to,
-          departure_time: departure,
-          price: price,
+          airline: "IndiGo",
+          from_city: "Pune",
+          to_city: "Bangalore",
+          departure_time: "10:00 AM",
+          price: 4500,
         },
       ])
 
@@ -57,19 +50,19 @@ export default function BookingPage() {
           <div className="space-y-5">
 
             <p className="text-3xl font-bold">
-              ✈️ Airline: {airline}
+              ✈️ Airline: IndiGo
             </p>
 
             <p className="text-2xl">
-              📍 Route: {from} → {to}
+              📍 Route: Pune → Bangalore
             </p>
 
             <p className="text-2xl">
-              🕒 Departure: {departure}
+              🕒 Departure: 10:00 AM
             </p>
 
             <p className="text-4xl font-bold text-blue-600">
-              ₹{price}
+              ₹4500
             </p>
 
           </div>
